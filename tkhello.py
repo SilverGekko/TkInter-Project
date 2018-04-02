@@ -1,0 +1,20 @@
+#from Tkinter import *
+#
+#root = Tk()
+#
+#w = Label(root, text="Hello, world!")
+#w.pack()
+#
+#root.mainloop()
+
+import Tkinter as tk
+
+root = tk.Tk()
+
+root.geometry("100x100")
+root.resizable(0, 1) #Don't allow resizing in the x or y direction
+
+label = tk.Label(root, text="Hello World", padx=20, pady=20)
+label.pack()
+
+root.mainloop()
