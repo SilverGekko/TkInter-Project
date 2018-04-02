@@ -7,6 +7,8 @@
 #
 #root.mainloop()
 
+#Added this line to test closing and opening atom
+
 import Tkinter as tk
 
 root = tk.Tk()
