@@ -1,24 +1,19 @@
-#from Tkinter import *
-#
-#root = Tk()
-#
-#w = Label(root, text="Hello, world!")
-#w.pack()
-#
-#root.mainloop()
-
-#Added this line to test closing and opening atom
-#Adding this line to test pulling from a different machine
-#More testing
+#Expanding on Example 1.2
 
 import Tkinter as tk
 
-root = tk.Tk()
+class Root(tk.Tk):
+    def __init__(self):
+        tk.Tk.__init__(self)
 
-root.geometry("100x100")
-root.resizable(0, 1) #Don't allow resizing in the x or y direction
+        self.label = tk.Label(self, text="Hello World", padx=20, pady=20)
+        self.geometry("400x100")
+        self.minsize(400, 100)
+        self.resizable(0, 1) #Don't allow resizing in the x or y direction
+        self.label.pack()
 
-label = tk.Label(root, text="Hello World", padx=20, pady=20)
-label.pack()
-
-root.mainloop()
+if __name__ == "__main__":
+    root = Root()
+    root2 = Root()
+    root2.mainloop()
+    root.mainloop()
