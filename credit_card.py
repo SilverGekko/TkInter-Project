@@ -20,8 +20,17 @@ class InputScreen(tk.Tk):
         super().__init__()
 
         self.title("Hugh Jazz Credit Security")
-        self.geometry("600x400")
         self.resizable(False, False)
+
+        # center the window
+        # assuming you have a symmetrical setup of monitors...
+        window_width = self.winfo_reqwidth()
+        window_height = self.winfo_reqwidth()
+
+        position_right = int(self.winfo_screenwidth() / 2 - window_width / 2)
+        position_down = int(self.winfo_screenheight() / 3 - window_height / 2)
+
+        self.geometry("+{}+{}".format(position_right, position_down))
 
         # as it turns out, there is no way to make the background of a widget transparent in tkinter.
         # this background image code works, but the label and entry widgets have opaque backgrounds above it.
