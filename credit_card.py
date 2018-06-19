@@ -162,10 +162,26 @@ class InputScreen(tk.Tk):
             pb.pack()
             progress_text.pack(side="bottom", fill="x", expand=True, padx=100, pady=20)
             scanning_frame.pack()
-            scan_window.focus_set()
             scan_window.grab_set()
-            scan_window.attributes("-topmost", True)
+            # scan_window.attributes("-topmost", True)
             self.inc_bar(pb, scan_window, progress_text)
+
+            x = self.winfo_x()
+            y = self.winfo_y()
+
+            #print(x)
+            #print(y)
+
+            scan_window.update()
+            w = scan_window.winfo_width()
+            h = scan_window.winfo_height()
+
+            #print(w)
+            #print(h)
+
+            scan_window.geometry("%dx%d+%d+%d" % (w, h, x + 50, y + 100))
+
+            scan_window.grab_set()
 
     def inc_bar(self, pb, scan, label):
         pb["value"] += 1
@@ -174,7 +190,7 @@ class InputScreen(tk.Tk):
             label.config(text="Scanning database %d out of 6871" % pb["value"])
             self.after(1, self.inc_bar, pb, scan, label)
         else:
-            msg.showinfo("Result", "Your card information is not in any hacker database!")
+            msg.showinfo("Result", "Your card information is not in any hacker database!", parent=scan)
             pb["value"] = 0
             # kinda odd way of removing the window but w/e
             self.bind("<ButtonRelease-1>", scan.destroy())
@@ -183,6 +199,7 @@ class InputScreen(tk.Tk):
             self.exp_box.delete(0, tk.END)
             self.zip_box.delete(0, tk.END)
             self.cc_box.focus_set()
+            scan.grab_release()
 
 
 # ya boi main
